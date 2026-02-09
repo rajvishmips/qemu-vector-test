@@ -15,5 +15,6 @@ main(void)
     test_mulf();
     test_muli();
     test_mini();
+    test_maxi();
     test_cmpf();
 }

@@ -8,8 +8,8 @@ LDFLAGS=-O2 -mlittle-endian -mtune=m8500 -mrvv-max-lmul=m8 -misa-spec=20191213 -
 
 all:rvv
 
-rvv :  rvv_tests.h rvv.o add_f.o add_i.o sub_f.o sub_i.o util.o util.h mul_f.o mul_i.o  min_i.o cmp_f.o
+rvv :  rvv_tests.h rvv.o add_f.o add_i.o sub_f.o sub_i.o util.o util.h mul_f.o mul_i.o  min_i.o cmp_f.o max_i.o
 	$(CC) $(OBJ) $(LDFLAGS) -o $@  $^
 clean:
-	- rm -f *.o
+	- rm -f *.o rvv
  

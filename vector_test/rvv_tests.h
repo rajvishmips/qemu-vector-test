@@ -15,6 +15,7 @@ bool test_mulf(void);
 bool test_muli(void);
 
 bool test_mini(void);
+bool test_maxi(void);
 bool test_cmpf(void);
 
 
