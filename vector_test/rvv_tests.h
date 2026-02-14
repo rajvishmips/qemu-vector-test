@@ -2,21 +2,26 @@
 #define _RVV_TESTS_H
 #include <stdbool.h>
 #ifndef _MAX_ELEMENTS
-#define MAX_ELEMENTS 16 // Can be changed later depending on vlen and dlen
+#define MAX_ELEMENTS 64 // Can be changed later depending on vlen and dlen
 #endif
-
-bool test_addf(void);
-bool test_addi(void);
-
-bool test_subf(void);
-bool test_subi(void);
-
-bool test_mulf(void);
-bool test_muli(void);
-
-bool test_mini(void);
-bool test_maxi(void);
-bool test_cmpf(void);
-
+#ifndef SCALAR_I
+#define SCALAR_I 10
+#endif
+#ifndef SCALAR_F
+#define SCALAR_F 10.0
+#endif
+// Functions
+extern bool test_addi32_vv(int debug);
+extern bool test_addf32_vv(int debug);
+extern bool test_cmpf32_vv(int debug);
+extern bool test_cmpi32_vv(int debug);
+extern bool test_cmpi32_vs(int debug);
+extern bool test_cmpf32_vs(int debug);
+extern bool test_muli32_vv(int debug);
+extern bool test_muli32_vs(int debug);
+extern bool test_divi32_vv(int debug);
+extern bool test_divi32_vv_m(int debug);
+extern bool test_divf32_vv(int debug);
+extern bool test_maxi32_vv(int debug);
 
 #endif
