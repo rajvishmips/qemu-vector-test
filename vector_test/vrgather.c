@@ -40,9 +40,11 @@ test_vrgather(int debug)
     rvv_vrgather_vv(dest,src,idx,vl);
     rvv_vrgather_vv(dest_bf,src,idx,vl);
     
-    for(int i=0;i<vl;i++) {
-        printf("%2d %d %d %d \n",i,src[i],dest[i],dest_bf[i]);
+    printf("Testing Vrgather: ");
+    if (compare_array_i(dest,dest_bf,vl,false)) {
+        printf(":-)\n");
+    } else {
+        printf(":-(\n");
     }
-    printf("%d %d %d \n",src[vl-1],dest[0],dest_bf[0]);
 }
 
