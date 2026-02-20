@@ -62,7 +62,7 @@ void
 init_vectors_f32(float *a,int n, bool random)
 {
     for(int i=0;i<n;i++) {
-        a[i]=random?(float)rand():(float)i;
+        a[i]=random?(float)(rand()%65535):(float)(i);
     }
     return;
 }
@@ -119,5 +119,12 @@ print_vector_i(int32_t *a,int32_t n)
 {
     for ( int i=0; i<n;i++) {
         printf("%02d: %0d \n",i,a[i]);
+    }
+}
+void
+print_vector_f(float *a,int32_t n)
+{
+    for ( int i=0; i<n;i++) {
+        printf("%02d: %10.4f \n",i,a[i]);
     }
 }

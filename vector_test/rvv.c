@@ -24,5 +24,10 @@ main(void)
     test_divi32_vv_m(debug);
     test_divf32_vv(debug);
     test_maxi32_vv(debug);
-
+    test_mulf32_vf(debug);
+    test_vfredmax(debug);
+    test_vfmacc_vv(debug);
+    test_vredsum(debug);
+    test_vslideup(debug);
+    test_vrgather(debug);
 }

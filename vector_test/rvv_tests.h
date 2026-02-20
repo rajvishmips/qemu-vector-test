@@ -23,5 +23,11 @@ extern bool test_divi32_vv(int debug);
 extern bool test_divi32_vv_m(int debug);
 extern bool test_divf32_vv(int debug);
 extern bool test_maxi32_vv(int debug);
+extern bool test_mulf32_vf(int debug);
+extern bool test_vfredmax(int debug);
+extern bool test_vfmacc_vv(int debug);
+extern bool test_vredsum(int debug);
+extern bool test_vslideup(int debug);
+extern bool test_vrgather(int debug);
 
 #endif

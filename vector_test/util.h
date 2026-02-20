@@ -11,6 +11,7 @@ extern bool check_array_i(int c_v[], int c_s[], int n);
 extern bool check_array_im(int c_v[], int c_s[], int n);
 extern bool check_array_f(float c_v[], float c_s[], int n);
 extern void print_vector_i(int32_t *a, int32_t n);
+extern void print_vector_f(float *a, int32_t n);
 
 #define EPSILON 1e-6f
 #define FLOAT_EQ_ABS(a, b) \

@@ -1,4 +1,5 @@
 #include <stdio.h>
+#include <stdlib.h>
 #include <stdint.h>
 #include <stdbool.h>
 #include <riscv_vector.h>
@@ -95,6 +96,47 @@ test_muli32_vs(int debug)
     rvv_muli32_vs(a,scalar,prod,MAX_ELEMENTS);
     rvv_muli32_vs_bf(a,scalar,prod_bf,MAX_ELEMENTS);
     if (compare_array_i(prod,prod_bf,MAX_ELEMENTS,0)) {
+        printf(":-)\n");
+        return true;
+    }
+    printf(":-(\n");
+    return false;
+}
+static int 
+rvv_mulf32_vf(float *a,float scalar , float *c,size_t n)
+{
+    size_t i=0;
+    while(i<n) {
+        size_t vl = __riscv_vsetvl_e32m1(n - i);
+        vfloat32m1_t va = __riscv_vle32_v_f32m1(&a[i], vl);
+        vfloat32m1_t vc = __riscv_vfmul_vf_f32m1(va, scalar, vl);
+        __riscv_vse32_v_f32m1(&c[i], vc, vl);
+        i+=vl;
+    }
+    return 0;
+}
+static int 
+rvv_mulf32_vf_bf(float *a,float scalar , float *c,size_t n)
+{
+    for(int i=0;i<n;i++)
+        c[i] = a[i]*scalar;
+    return 0;
+}
+extern bool
+test_mulf32_vf(int debug)
+{
+    float a[MAX_ELEMENTS];
+    float prod[MAX_ELEMENTS];
+    float prod_bf[MAX_ELEMENTS];
+    float scalar = SCALAR_F;
+    int i=rand()%MAX_ELEMENTS;
+
+    printf("Testing Vector Scalar f32 Multiplication: ");
+    init_vectors_f32(a,MAX_ELEMENTS,true);
+    rvv_mulf32_vf(a,scalar,prod,MAX_ELEMENTS);
+    rvv_mulf32_vf_bf(a,scalar,prod_bf,MAX_ELEMENTS);
+    
+    if (compare_array_f(prod,prod_bf,MAX_ELEMENTS,0)) {
         printf(":-)\n");
         return true;
     }
